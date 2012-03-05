@@ -48,7 +48,7 @@ colorscheme solarized           " activate 'solarized' colors
 set backspace=indent,eol,start	" backspacing over everything in insert mode
 
 " Command completion
-set wildignore=*.bak,*.o;*.e,*~ " wildmenu: ignore these extensions
+set wildignore=*.bak,*.o;*.e,*~,.svn,.git,.hg,*.class,*.obj,*.swp,*.jpg,*.png,*.gif " wildmenu: ignore these extensions
 set wildmenu                    " command-line completion in an enhanced mode
 set wildmode=list:longest
 
