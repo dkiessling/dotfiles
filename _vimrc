@@ -136,6 +136,8 @@ endif
 " when vimrc is edited, reload it
 autocmd! bufwritepost _vimrc source $HOME\_vimrc
 
+" JavaScript files
+au BufNewFile,BufRead jquery.*.js,*.json set ft=javascript syntax=jquery
 " PowerShell
 au BufNewFile,BufRead *.ps1,*.psc1 setf ps1
 
