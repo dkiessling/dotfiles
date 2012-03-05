@@ -1,4 +1,0 @@
-[submodules "vimfiles/bundle/solarized"]
-    path = vimfiles/bundle/solarized
-    url = git://github.com/altercation/vim-colors-solarized.git
-    ignore = dirty
