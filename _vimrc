@@ -39,17 +39,17 @@ call togglebg#map("<F5>")
 filetype plugin on              " enable file type detection, use the default filetype settings
 filetype indent on              " load indent files, to automatically do language-dependent indenting
 
-set nocompatible 				" no vi compatibility
+set nocompatible                " no vi compatibility
 set modelines=0                 " prevent some exploits having to do with modelines in files
 
 " color settings for solarized
 syntax on                       " switch syntax highlighting on
 set background=dark             " 'dark' or 'light' available for solarized
-let g:solarized_contrast = high
+let g:solarized_contrast = "high"
 colorscheme solarized           " activate 'solarized' colors
 
 " Input support
-set backspace=indent,eol,start	" backspacing over everything in insert mode
+set backspace=indent,eol,start  " backspacing over everything in insert mode
 
 " Command completion
 set wildignore=*.bak,*.o;*.e,*~,.svn,.git,.hg,*.class,*.obj,*.swp,*.jpg,*.png,*.gif " wildmenu: ignore these extensions
@@ -57,50 +57,50 @@ set wildmenu                    " command-line completion in an enhanced mode
 set wildmode=list:longest
 
 " Search
-set smartcase					" override 'ignorecase' when pattern has upper case characters
+set smartcase                   " override 'ignorecase' when pattern has upper case characters
 set incsearch                   " do incremental searching
 set hlsearch                    " highlight the last used search pattern
 
-set autoindent					" automatically set the indent of a new line
+set autoindent                  " automatically set the indent of a new line
 set autoread                    " read open files again when changed outside Vim
 set autowrite                   " write a modified buffer on each :next
 set browsedir=current           " which directory to use for the file browser
 set complete+=k                 " scan the files given with the 'dictionary' option
 "set cursorcolumn                " highlight the current column the cursor is in
-set cursorline					" highlight the screen line of the cursor
-set encoding=utf-8				" character encoding used in vim: "latin1", "utf-8", "euc-jp", "big5", etc.
+set cursorline                  " highlight the screen line of the cursor
+set encoding=utf-8              " character encoding used in vim: "latin1", "utf-8", "euc-jp", "big5", etc.
 set expandtab                   " use the appropriate number of spaces to insert a <Tab>
-set fileencodings=utf-8			" character encoding for the current file
+set fileencodings=utf-8         " character encoding for the current file
 set fileformats=dos,unix        " format of the line ends
 set foldenable                  " enable folding
 set foldmethod=marker           " the kind of folding (manual, indent, syntax, expr)
 set guioptions-=T
-set history=1000          		" keep 1000 lines of command line history
+set history=1000                " keep 1000 lines of command line history
 set listchars=tab:>.,eol:\$     " strings to use in 'list' mode
 " enable the use of the mouse
 if has('mouse')
-	set mouse=a
+    set mouse=a
 endif
 set mousehide                   " hide the mouse pointer when characters are typed
 set nobackup                    " do not keep a backup file
 set noerrorbells                " do not beep
 set noswapfile                  " turn of swap files
-set nowrap						" do not wrap lines
+set nowrap                      " do not wrap lines
 set nowritebackup
-set number						" show the line number for each line
-set ruler						" display the current cursor position all the time
+set number                      " show the line number for each line
+set ruler                       " display the current cursor position all the time
 set scrolloff=4                 " minimal number of lines to keep above and below the cursor
 set shiftround                  " when at 3 spaces, and I hit > ... go to 4, not to 7
-set shiftwidth=4				" number of spaces used for each step of (auto)indent
-set showcmd						" display incomplete commands
-set showmatch					" when inserting a bracket, briefly jump to its match
+set shiftwidth=4                " number of spaces used for each step of (auto)indent
+set showcmd                     " display incomplete commands
+set showmatch                   " when inserting a bracket, briefly jump to its match
 set showmode                    " display the mode
 set sidescrolloff=2
-set smartindent					" do clever autodindenting
+set smartindent                 " do clever autodindenting
 set smarttab
-set softtabstop=4				" number of spaces a <Tab> in the text stands for
+set softtabstop=4               " number of spaces a <Tab> in the text stands for
 set spelllang=en,de             " spell checking
-set tabstop=4					" number of spaces a <Tab> in the text stands for
+set tabstop=4                   " number of spaces a <Tab> in the text stands for
 try
     if has("win32") || has("win64")
         set guifont=Lucida_Console:h10:cDEFAULT
@@ -117,9 +117,9 @@ try
 catch
 endtry
 set visualbell
-set scrolloff=5 				" 5 lines bevore and after the current line when scrolling
+set scrolloff=5                 " 5 lines bevore and after the current line when scrolling
 
-set laststatus=2				" Always display a status line at the bottom of the window
+set laststatus=2                " Always display a status line at the bottom of the window
 set statusline=
 set statusline+=%-3.3n\                      " buffer number
 set statusline+=%f\                          " file name
@@ -138,16 +138,14 @@ if has("gui_running")
 endif
 
 " when vimrc is edited, reload it
-autocmd! bufwritepost _vimrc source $HOME\_vimrc
+au BufWritePost _vimrc so $HOME\_vimrc
 
 " set custom file types
 au BufNewFile,BufRead jquery.*.js,*.json set ft=javascript syntax=jquery
 au BufNewFile,BufRead *.ps1,*.psc1 setf ps1
-au BufNewFile,BufRead *.config set xml
 
 " Mappings
 " ========
-"
 " ROT13 - fun
 map <F12> ggVGg?
 
