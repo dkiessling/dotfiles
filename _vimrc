@@ -34,6 +34,7 @@ filetype off
 " use pathogen.vim to manage and load plugins
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
+call togglebg#map("<F5>")
 
 filetype plugin on              " enable file type detection, use the default filetype settings
 filetype indent on              " load indent files, to automatically do language-dependent indenting
@@ -41,8 +42,10 @@ filetype indent on              " load indent files, to automatically do languag
 set nocompatible 				" no vi compatibility
 set modelines=0                 " prevent some exploits having to do with modelines in files
 
+" color settings for solarized
 syntax on                       " switch syntax highlighting on
 set background=dark             " 'dark' or 'light' available for solarized
+let g:solarized_contrast = high
 colorscheme solarized           " activate 'solarized' colors
 
 " Input support
@@ -70,7 +73,7 @@ set expandtab                   " use the appropriate number of spaces to insert
 set fileencodings=utf-8			" character encoding for the current file
 set fileformats=dos,unix        " format of the line ends
 set foldenable                  " enable folding
-set foldmethod=syntax           " the kind of folding (manual, indent, syntax, expr)
+set foldmethod=marker           " the kind of folding (manual, indent, syntax, expr)
 set guioptions-=T
 set history=1000          		" keep 1000 lines of command line history
 set listchars=tab:>.,eol:\$     " strings to use in 'list' mode
