@@ -31,8 +31,9 @@
 "  :w               "Write buffer using dos (CRLF) line endings
 
 filetype off
-
+" use pathogen.vim to manage and load plugins
 call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
 
 filetype plugin on              " enable file type detection, use the default filetype settings
 filetype indent on              " load indent files, to automatically do language-dependent indenting
@@ -136,10 +137,10 @@ endif
 " when vimrc is edited, reload it
 autocmd! bufwritepost _vimrc source $HOME\_vimrc
 
-" JavaScript files
+" set custom file types
 au BufNewFile,BufRead jquery.*.js,*.json set ft=javascript syntax=jquery
-" PowerShell
 au BufNewFile,BufRead *.ps1,*.psc1 setf ps1
+au BufNewFile,BufRead *.config set xml
 
 " Mappings
 " ========
