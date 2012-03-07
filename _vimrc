@@ -103,7 +103,7 @@ set spelllang=en,de             " spell checking
 set tabstop=4                   " number of spaces a <Tab> in the text stands for
 try
     if has("win32") || has("win64")
-        set guifont=Lucida_Console:h10:cDEFAULT
+        set guifont=Lucida_Console:h9:cDEFAULT
         set directory=$TMP
         set backupdir=$TMP      " set the backup directory
         set undodir=$TMP        " set the undo directory
@@ -133,8 +133,8 @@ set statusline+=%-10.(%l,%c%V%)\ %<%P        " offset
 
 " Size of new GVim window
 if has("gui_running")
-  set lines=50
-  set columns=120
+  set lines=60
+  set columns=140
 endif
 
 " when vimrc is edited, reload it
@@ -154,3 +154,6 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+
+" clear search highlighting with ESC
+nnoremap <esc> :noh<cr><esc>
