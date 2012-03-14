@@ -1,0 +1,40 @@
+[ui]
+editor = gvim.exe
+username = Daniel Kiessling <dkiessling@googlemail.com>
+verbose = True
+merge = tortoisemerge
+
+[extdiff]
+kdiff3 =
+
+[web]
+description = Daniels Mercurial Repository
+port = 8000
+push_ssl = False
+allow_push = *
+allow_archive = zip
+style = gitweb
+
+[tortoisehg]
+authorcolor = True
+ui.language = en
+postpull = update
+vdiff= tortoisemerge
+monitorrepo = localonly
+
+[extensions]
+color =
+hgext.graphlog =
+commitsigs = c:\dev\hg\commitsigs\commitsigs.py
+progress =
+extdiff = 
+
+[color]
+mode = auto
+
+[alias]
+slog = log --template '{rev}:{node|short} {desc|firstline}\n'
+
+[commitsigs]
+scheme = gnupg
+gnupg.path = C:\Program Files (x86)\GNU\GnuPG\gpg2.exe
