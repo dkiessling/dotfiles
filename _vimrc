@@ -117,7 +117,7 @@ try
 catch
 endtry
 set visualbell
-set scrolloff=5                 " 5 lines before and after the current line when scrolling
+set scrolloff=5                 " 5 lines bevore and after the current line when scrolling
 
 set laststatus=2                " Always display a status line at the bottom of the window
 set statusline=
@@ -157,3 +157,7 @@ map <C-l> <C-W>l
 
 " clear search highlighting with ESC
 nnoremap <esc> :noh<cr><esc>
+
+" moving lines with enter and shift enter
+map <CR> o<Esc>k
+map <S-Enter> O<Esc>j
