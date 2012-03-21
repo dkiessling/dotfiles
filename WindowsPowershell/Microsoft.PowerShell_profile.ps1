@@ -10,10 +10,9 @@
 # Git
 # http://markembling.info/2009/09/my-ideal-powershell-prompt-with-git-integration
 
-$hgPath = [Environment]::GetFolderPath("Personal") + "/WindowsPowershell/hgutils.ps1"
-$gitPath = [Environment]::GetFolderPath("Personal") + "/WindowsPowershell/gitutils.ps1"
-. (Resolve-Path $hgPath)
-. (Resolve-Path $gitPath)
+$powershellPath = [Environment]::GetFolderPath("Personal") + "/WindowsPowershell"
+. (Resolve-Path "$powershellPath/hgutils.ps1")
+. (Resolve-Path "$powershellPath/gitutils.ps1")
 
 Set-Alias ll Get-ChildItem
 
