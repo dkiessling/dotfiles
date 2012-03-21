@@ -15,6 +15,8 @@ $gitPath = [Environment]::GetFolderPath("Personal") + "/WindowsPowershell/gituti
 . (Resolve-Path $hgPath)
 . (Resolve-Path $gitPath)
 
+Set-Alias ll Get-ChildItem
+
 function prompt {
 	$Host.UI.RawUi.WindowTitle = $env:username + '@' + [System.Environment]::MachineName + ' ' + $pwd 
     Write-Host($pwd) -nonewline -foregroundcolor Green       
