@@ -57,9 +57,10 @@ set wildmenu                    " command-line completion in an enhanced mode
 set wildmode=list:longest
 
 " Search
-set smartcase                   " override 'ignorecase' when pattern has upper case characters
-set incsearch                   " do incremental searching
 set hlsearch                    " highlight the last used search pattern
+set incsearch                   " do incremental searching
+set ignorecase                  " searches are case insensitive
+set smartcase                   " override 'ignorecase' when pattern has upper case characters
 
 set scrolloff=5                 " minimal number of lines to keep above and below the cursor
 set sidescrolloff=2             " minimal number of columns to keep left and right of the cursor
