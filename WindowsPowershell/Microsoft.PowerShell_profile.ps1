@@ -16,10 +16,16 @@ $powershellPath = [Environment]::GetFolderPath("Personal") + "/WindowsPowershell
 
 Set-Alias ll Get-ChildItem
 
+if ($host.UI.RawUI.WindowTitle -match "Administrator")
+{
+    $host.UI.RawUI.BackgroundColor = "DarkRed";
+    $host.UI.RawUI.ForegroundColor = "White";
+}
+
 function prompt {
-	$Host.UI.RawUi.WindowTitle = $env:username + '@' + [System.Environment]::MachineName + ' ' + $pwd 
-    Write-Host($pwd) -nonewline -foregroundcolor Green       
-    
+    $Host.UI.RawUi.WindowTitle = $env:username + '@' + [System.Environment]::MachineName + ' ' + $pwd 
+    Write-Host($pwd) -nonewline -foregroundcolor Green
+
 # Mercurial
    if (isCurrentDirectoryMercurialRepository) {
         $status = mercurialStatus
@@ -59,6 +65,6 @@ function prompt {
         Write-Host(']') -nonewline -foregroundcolor Yellow
     }
     
-	Write-Host('>') -nonewline -foregroundcolor Green    
-	return " "
+    Write-Host('>') -nonewline -foregroundcolor Green    
+    return " "
 }
