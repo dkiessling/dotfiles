@@ -31,7 +31,7 @@ function prompt {
         $status = mercurialStatus
         $currentBranch = mercurialBranchName
         
-        Write-Host(' [') -nonewline -foregroundcolor Yellow
+        Write-Host(' HG [') -nonewline -foregroundcolor Yellow
         Write-Host($currentBranch) -nonewline -foregroundcolor Cyan
         Write-Host(' A' + $status["added"]) -nonewline -foregroundcolor Green 
         Write-Host(' M' + $status["modified"]) -nonewline -foregroundcolor Yellow
@@ -49,7 +49,7 @@ function prompt {
         $status = gitStatus
         $currentBranch = gitBranchName
 
-        Write-Host(' [') -nonewline -foregroundcolor Yellow
+        Write-Host(' Git [') -nonewline -foregroundcolor Yellow
         if ($status["ahead"] -eq $FALSE) {
             Write-Host($currentBranch) -nonewline -foregroundcolor Cyan
         } else {
