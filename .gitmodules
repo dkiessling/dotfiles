@@ -7,3 +7,6 @@
 [submodule "vimfiles/bundle/vim-ps1"]
 	path = vimfiles/bundle/vim-ps1
 	url = git+ssh://git@github.com/PProvost/vim-ps1.git
+[submodule "vimfiles/bundle/vim-markdown"]
+	path = vimfiles/bundle/vim-markdown
+	url = git+ssh://git@github.com/tpope/vim-markdown
