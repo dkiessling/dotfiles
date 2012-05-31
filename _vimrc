@@ -69,7 +69,7 @@ if has("gui_running")
   set lines=60
   set columns=140
 endif
-set listchars=tab:>.,eol:\$     " strings to use in 'list' mode
+set listchars=tab:>.\,eol:\$     " strings to use in 'list' mode
 set number                      " show the line number for each line
 
 set cursorline                  " highlight the screen line of the cursor
@@ -162,3 +162,6 @@ nnoremap <esc> :noh<cr><esc>
 " moving lines with enter and shift enter
 map <CR> o<Esc>k
 map <S-Enter> O<Esc>j
+
+" Shortcut to rapidly toggle `set list`
+nmap <leader>l :set list!<CR>
