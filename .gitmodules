@@ -4,3 +4,6 @@
 [submodule "vimfiles/color/molokai"]
 	path = vimfiles/color/molokai
 	url = git+ssh://git@github.com/tomasr/molokai.git
+[submodule "vimfiles/bundle/vim-ps1"]
+	path = vimfiles/bundle/vim-ps1
+	url = git+ssh://git@github.com/PProvost/vim-ps1.git

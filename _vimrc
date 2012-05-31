@@ -46,7 +46,8 @@ set modelines=0                 " prevent some exploits having to do with modeli
 syntax on                       " switch syntax highlighting on
 set background=dark             " 'dark' or 'light' available for solarized
 let g:solarized_contrast = "high"
-colorscheme solarized           " activate 'solarized' colors
+"colorscheme solarized           " activate 'solarized' colors
+colorscheme molokai
 
 " Input support
 set backspace=indent,eol,start  " backspacing over everything in insert mode
