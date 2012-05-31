@@ -14,7 +14,8 @@ $powershellPath = [Environment]::GetFolderPath("Personal") + "/WindowsPowershell
 . (Resolve-Path "$powershellPath/hgutils.ps1")
 . (Resolve-Path "$powershellPath/gitutils.ps1")
 
-Set-Alias ll Get-ChildItem
+set-alias ll Get-ChildItem
+set-alias fortune "$powershellPath/fortune.ps1"
 
 if ($host.UI.RawUI.WindowTitle -match "Administrator")
 {
