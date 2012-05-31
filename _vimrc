@@ -44,8 +44,8 @@ set modelines=0                 " prevent some exploits having to do with modeli
 
 " color settings for solarized
 syntax on                       " switch syntax highlighting on
-set background=dark             " 'dark' or 'light' available for solarized
-let g:solarized_contrast = "high"
+"set background=dark             " 'dark' or 'light' available for solarized
+"let g:solarized_contrast = "high"
 "colorscheme solarized           " activate 'solarized' colors
 colorscheme molokai
 
