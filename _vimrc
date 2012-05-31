@@ -79,6 +79,7 @@ set autoindent                  " automatically set the indent of a new line
 set autoread                    " read open files again when changed outside Vim
 set autowrite                   " write a modified buffer on each :next
 set browsedir=current           " which directory to use for the file browser
+set clipboard=unnamed           " copy to Windows clipboard
 set complete+=k                 " scan the files given with the 'dictionary' option
 set encoding=utf-8              " character encoding used in vim: "latin1", "utf-8", "euc-jp", "big5", etc.
 set expandtab                   " use the appropriate number of spaces to insert a <Tab>
