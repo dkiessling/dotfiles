@@ -69,6 +69,7 @@ set sidescrolloff=2             " minimal number of columns to keep left and rig
 if has("gui_running")
   set lines=60
   set columns=140
+  set guioptions-=T             " no toolbar in GUI
 endif
 set listchars=tab:>.\,eol:\$     " strings to use in 'list' mode
 set number                      " show the line number for each line
@@ -87,7 +88,6 @@ set fileencodings=utf-8         " character encoding for the current file
 set fileformats=dos,unix        " format of the line ends
 set foldenable                  " enable folding
 set foldmethod=marker           " the kind of folding (manual, indent, syntax, expr)
-set guioptions-=T
 set history=1000                " keep 1000 lines of command line history
 " enable the use of the mouse
 if has('mouse')
