@@ -63,12 +63,13 @@ set incsearch                   " do incremental searching
 set ignorecase                  " searches are case insensitive
 set smartcase                   " override 'ignorecase' when pattern has upper case characters
 
-set scrolloff=5                 " minimal number of lines to keep above and below the cursor
+set scrolloff=4                 " minimal number of lines to keep above and below the cursor
 set sidescrolloff=2             " minimal number of columns to keep left and right of the cursor
 " Size of new GVim window
 if has("gui_running")
-  set lines=60
-  set columns=140
+  set lines=80
+  set columns=180
+  set colorcolumn=81
   set guioptions-=T             " no toolbar in GUI
 endif
 set listchars=tab:>.\,eol:\$     " strings to use in 'list' mode
@@ -102,16 +103,16 @@ set nowritebackup
 set ruler                       " display the current cursor position all the time
 
 set shiftround                  " when at 3 spaces, and I hit > ... go to 4, not to 7
-set shiftwidth=4                " number of spaces used for each step of (auto)indent
+set shiftwidth=2                " number of spaces used for each step of (auto)indent
 set showcmd                     " display incomplete commands
 set showmatch                   " when inserting a bracket, briefly jump to its match
 set showmode                    " display the mode
 
 set smartindent                 " do clever autodindenting
 set smarttab
-set softtabstop=4               " number of spaces a <Tab> in the text stands for
+set softtabstop=2               " number of spaces a <Tab> in the text stands for
 set spelllang=en,de             " spell checking
-set tabstop=4                   " number of spaces a <Tab> in the text stands for
+set tabstop=2                   " number of spaces a <Tab> in the text stands for
 try
     if has("win32") || has("win64")
         set guifont=Lucida_Console:h9:cDEFAULT
