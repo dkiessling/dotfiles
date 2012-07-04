@@ -97,7 +97,7 @@ set mousehide                   " hide the mouse pointer when characters are typ
 set nobackup                    " do not keep a backup file
 set noerrorbells                " do not beep
 set noswapfile                  " turn of swap files
-set nowrap                      " do not wrap lines
+set wrap                        " do wrap lines
 set nowritebackup
 set ruler                       " display the current cursor position all the time
 
@@ -149,6 +149,18 @@ au BufNewFile,BufRead *.ps1,*.psc1 setf ps1
 
 " Mappings
 " ========
+" movement with wrap turned on
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up> gk
+vnoremap <Down> gj
+vnoremap <Up> gk
+inoremap <Down> <C-o>gj
+inoremap <Up> <C-o>gk
+
 " ROT13 - fun
 map <F12> ggVGg?
 
