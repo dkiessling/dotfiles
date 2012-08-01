@@ -1,6 +1,3 @@
-[submodule "vimfiles/bundle/solarized"]
-	path = vimfiles/bundle/solarized
-	url = git+ssh://git@github.com/altercation/vim-colors-solarized.git
 [submodule "vimfiles/bundle/vim-ps1"]
 	path = vimfiles/bundle/vim-ps1
 	url = git+ssh://git@github.com/PProvost/vim-ps1.git

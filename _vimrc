@@ -34,7 +34,6 @@ filetype off
 " use pathogen.vim to manage and load plugins
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
-call togglebg#map("<F5>")
 
 filetype plugin on              " enable file type detection, use the default filetype settings
 filetype indent on              " load indent files, to automatically do language-dependent indenting
@@ -42,11 +41,8 @@ filetype indent on              " load indent files, to automatically do languag
 set nocompatible                " no vi compatibility
 set modelines=0                 " prevent some exploits having to do with modelines in files
 
-" color settings for solarized
+" color settings
 syntax on                       " switch syntax highlighting on
-"set background=dark             " 'dark' or 'light' available for solarized
-"let g:solarized_contrast = "high"
-"colorscheme solarized           " activate 'solarized' colors
 colorscheme molokai
 
 " Input support
@@ -103,16 +99,16 @@ set nowritebackup
 set ruler                       " display the current cursor position all the time
 
 set shiftround                  " when at 3 spaces, and I hit > ... go to 4, not to 7
-set shiftwidth=2                " number of spaces used for each step of (auto)indent
+set shiftwidth=4                " number of spaces used for each step of (auto)indent
 set showcmd                     " display incomplete commands
 set showmatch                   " when inserting a bracket, briefly jump to its match
 set showmode                    " display the mode
 
 set smartindent                 " do clever autodindenting
 set smarttab
-set softtabstop=2               " number of spaces a <Tab> in the text stands for
+set softtabstop=4               " number of spaces a <Tab> in the text stands for
 set spelllang=en,de             " spell checking
-set tabstop=2                   " number of spaces a <Tab> in the text stands for
+set tabstop=4                   " number of spaces a <Tab> in the text stands for
 try
     if has("win32") || has("win64")
         set guifont=Lucida_Console:h9:cDEFAULT
