@@ -10,29 +10,64 @@
 # Git
 # http://markembling.info/2009/09/my-ideal-powershell-prompt-with-git-integration
 
+Set-PSDebug -Strict
+$ErrorActionPreference = "stop"
+
 $powershellPath = [Environment]::GetFolderPath("Personal") + "/WindowsPowershell"
 . (Resolve-Path "$powershellPath/hgutils.ps1")
 . (Resolve-Path "$powershellPath/gitutils.ps1")
 
 set-alias ll Get-ChildItem
 set-alias fortune "$powershellPath/fortune.ps1"
+fortune
 
-if ($host.UI.RawUI.WindowTitle -match "Administrator")
-{
-    $host.UI.RawUI.BackgroundColor = "DarkRed";
-    $host.UI.RawUI.ForegroundColor = "White";
+function get-adminuser() {
+   $id = [Security.Principal.WindowsIdentity]::GetCurrent()
+   $p = New-Object Security.Principal.WindowsPrincipal($id)
+   return $p.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+}
+
+function set-adminBackground() {
+    if ( Get-Adminuser ) {
+        $chost = [ConsoleColor]::DarkRed;
+    } else {
+        $chost = $Host.UI.RawUI.BackgroundColor
+    }
+
+    $Host.UI.RawUI.BackgroundColor = $chost
+}
+
+set-adminbackground
+
+# Define the prompt. Show '~' instead of $HOME
+function shorten-path([string] $path) {
+   $loc = $path.Replace($HOME, '~')
+   # remove prefix for UNC paths
+   $loc = $loc -replace '^[^:]+::', ''
+   # make path shorter like tabs in Vim,
+   # handle paths starting with \\ and . correctly
+   return ($loc -replace '\\(\.?)([^\\])[^\\]*(?=\\)','\$1$2')
+}
+
+
+function get-ips() {
+   $ent = [net.dns]::GetHostEntry([net.dns]::GetHostName())
+   return $ent.AddressList | ?{ $_.ScopeId -ne 0 } | %{
+      [string]$_
+   }
 }
 
 function prompt {
-    $Host.UI.RawUi.WindowTitle = $env:username + '@' + [System.Environment]::MachineName + ' ' + $pwd 
-    Write-Host($pwd) -nonewline -foregroundcolor Green
+    $Host.UI.RawUI.WindowTitle = $env:username + '@' + [System.Environment]::MachineName + ' - ' + $pwd 
+
+    write-host($pwd) -nonewline -foregroundcolor DarkGreen
 
 # Mercurial
    if (isCurrentDirectoryMercurialRepository) {
         $status = mercurialStatus
         $currentBranch = mercurialBranchName
         
-        Write-Host(' HG [') -nonewline -foregroundcolor Yellow
+        Write-Host(' hg [') -nonewline -foregroundcolor Yellow
         Write-Host($currentBranch) -nonewline -foregroundcolor Cyan
         Write-Host(' A' + $status["added"]) -nonewline -foregroundcolor Green 
         Write-Host(' M' + $status["modified"]) -nonewline -foregroundcolor Yellow
@@ -50,7 +85,7 @@ function prompt {
         $status = gitStatus
         $currentBranch = gitBranchName
 
-        Write-Host(' Git [') -nonewline -foregroundcolor Yellow
+        Write-Host(' git [') -nonewline -foregroundcolor Yellow
         if ($status["ahead"] -eq $FALSE) {
             Write-Host($currentBranch) -nonewline -foregroundcolor Cyan
         } else {
@@ -66,6 +101,6 @@ function prompt {
         Write-Host(']') -nonewline -foregroundcolor Yellow
     }
     
-    Write-Host('>') -nonewline -foregroundcolor Green    
+    Write-Host('>') -nonewline -foregroundcolor DarkGreen 
     return " "
 }
