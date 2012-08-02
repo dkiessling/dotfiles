@@ -63,12 +63,12 @@ set scrolloff=4                 " minimal number of lines to keep above and belo
 set sidescrolloff=2             " minimal number of columns to keep left and right of the cursor
 " Size of new GVim window
 if has("gui_running")
-  set lines=80
-  set columns=180
-  set colorcolumn=81
-  set guioptions-=T             " no toolbar in GUI
+    set lines=80
+    set columns=180
+    set colorcolumn=81
+    set guioptions-=T           " no toolbar in GUI
 endif
-set listchars=tab:>.\,eol:\$     " strings to use in 'list' mode
+set listchars=tab:>.\,eol:\$    " strings to use in 'list' mode
 set number                      " show the line number for each line
 
 set cursorline                  " highlight the screen line of the cursor
@@ -146,6 +146,8 @@ au BufNewFile,BufRead *.ps1,*.psc1 setf ps1
 
 " Mappings
 " ========
+let mapleader=","
+
 " movement with wrap turned on
 nnoremap j gj
 nnoremap k gk
