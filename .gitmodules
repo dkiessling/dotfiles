@@ -7,3 +7,6 @@
 [submodule "vimfiles/bundle/molokai"]
 	path = vimfiles/bundle/molokai
 	url = https://github.com/tomasr/molokai.git
+[submodule "WindowsPowershell/Modules/posh-git"]
+	path = WindowsPowershell/Modules/posh-git
+	url = https://github.com/dahlbyk/posh-git.git
