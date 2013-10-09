@@ -58,7 +58,7 @@ set wildignore+=*.orig
 set wildignore+=*.bak,*.swp
 set wildignore+=*.class
 set wildmenu                    " command-line completion in an enhanced mode
-set wildmode=list:longest
+set wildmode=longest,list,full
 
 " Search
 set hlsearch                    " highlight the last used search pattern
@@ -91,8 +91,17 @@ set expandtab                   " use the appropriate number of spaces to insert
 
 set fileencodings=utf-8         " character encoding for the current file
 set fileformats=dos,unix        " format of the line ends
-set foldenable                  " enable folding
-set foldmethod=marker           " the kind of folding (manual, indent, syntax, expr)
+
+if has("folding")
+    set foldenable          " enable folding
+    set foldmethod=syntax   " the kind of folding (manual, indent, syntax, expr)
+    set foldlevelstart=99   " start editing with all folds open
+
+    " toggle folds
+    nnoremap <Space> za
+    vnoremap <Space> za
+endif
+
 set history=1000                " keep 1000 lines of command line history
 " enable the use of the mouse
 if has('mouse')
@@ -158,6 +167,9 @@ if has("autocmd")
 
     " for ruby, autoindent with two spaces, always expand tabs
     autocmd FileType ruby,html,javascript,xml,xhtml set autoindent shiftwidth=2 softtabstop=2 expandtab
+
+    " set color for text files
+    autocmd FileType text set filetype=markdown
 endif
 
 " Mappings
