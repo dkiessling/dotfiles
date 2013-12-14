@@ -49,7 +49,15 @@ colorscheme molokai
 set backspace=indent,eol,start  " backspacing over everything in insert mode
 
 " Command completion
-set wildignore=*.bak,*.o;*.e,*~,.svn,.git,.hg,*.class,*.obj,*.swp,*.jpg,*.png,*.gif " wildmenu: ignore these extensions
+set wildignore+=.hg,.git.svn                        " Version control
+set wildignore+=*.aux,*.out,*.toc                   " LaTeX intermediate files
+set wildignore+=*.jpg,*.png,*.gif,*.bmp,*.jpeg      " binary images
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest    " compiles object files
+set wildignore+=*.bak,*~                            " backup files
+set wildignore+=*.sw?                               " Vim swap flies
+set wildignore+=*.DS_Store                          " OSX bullshit
+set wildignore+=*.orig                              " Merge resolution file
+
 set wildmenu                    " command-line completion in an enhanced mode
 set wildmode=list:longest
 
@@ -122,6 +130,7 @@ try
         set undodir=/tmp        " set the undo directory
     endif
     set undofile                " saves undo history to an undo file
+    set undoreload=10000        " save the whole buffer for undo when reloading it
 catch
 endtry
 set visualbell
@@ -136,6 +145,9 @@ set statusline+=%{&fileformat}]              " file format
 set statusline+=%=                           " right align
 set statusline+=0x%-8B\                      " current char
 set statusline+=%-10.(%l,%c%V%)\ %<%P        " offset
+
+" Highlight VCS conflict markers
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 " when vimrc is edited, reload it
 au BufWritePost _vimrc so $HOME\_vimrc
