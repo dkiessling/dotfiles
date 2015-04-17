@@ -4,18 +4,56 @@
 " Unix      $HOME/.vimrc
 " Windows   $HOME\_vimrc or $VIMR\vimrc
 "
-" How to install pathogene and 'solarized' colors
-" ===============================================
+" How to install pathogen
+" ==============================================================================
 "
 " cd ~/.vim
-" git clone git://github.com/tpope/vim-pathogen.git
+" git clone https://github.com/tpope/vim-pathogen.git
 " mkdir bundle
+"
+" How to install 'molokai' colors
+" ==============================================================================
+"
+" cd colors
+" git clone https://github.com/tomasr/molokai.git
+"
+" How to install 'solarized' colors
+" ==============================================================================
+"
 " cd bundle
-" git clone git://github.com/altercation/vim-colors-solarized.git
+" git clone https://github.com/altercation/vim-colors-solarized.git
+"
+" How to install vim-airline plugin
+" ==============================================================================
+" 
+" cd bundle
+" git clone https://github.com/bling/vim-airline.git
+"
+" How to install vim-ps1 plugin
+" ==============================================================================
+"
+" cd bundle
+" git clone https://github.com/PProvost/vim-ps1.git
+"
+" How to install vim-markdown plugin
+" ==============================================================================
+"
+" cd bundle
+" git clone https://github.com/tpope/vim-markdown.git
+"
+" How to install vim-snipmate plugin
+" ==============================================================================
+"
+" cd bundle
+" git clone https://github.com/tomtom/tlib_vim.git
+" git clone https://github.com/MarcWeber/vim-addon-mw-utils.git
+" git clone https://github.com/garbas/vim-snipmate.git
+" Optional:
+" git clone https://github.com/honza/vim-snippets.git
 "
 " How to change end-of-line format for dos-mac-unix
 " =================================================
-" https://vim.wikia.com/wiki/Change_end-of-line_format_for_dos-max-unix
+" http://vim.wikia.com/wiki/File_format
 "
 " convert from dos/unix to unix
 " -----------------------------
@@ -26,40 +64,54 @@
 "
 " convert from dos/unix to dos
 " ----------------------------
-"  :update          "Save any changes
-"  :e ++ff=dos      "Edit file again, using dos file format
-"  :w               "Write buffer using dos (CRLF) line endings
+" :update           "Save any changes
+" :e ++ff=dos       "Edit file again, using dos file format
+" :w                "Write buffer using dos (CRLF) line endings
 
 filetype off
 " use pathogen.vim to manage and load plugins
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+execute pathogen#infect()
 
-filetype plugin on              " enable file type detection, use the default filetype settings
-filetype indent on              " load indent files, to automatically do language-dependent indenting
+Helptags
 
-set nocompatible                " no vi compatibility
-set modelines=0                 " prevent some exploits having to do with modelines in files
+filetype plugin on                          " enable file type detection, use the default filetype settings
+filetype indent on                          " load indent files, to automatically do language-dependent indenting
 
-" color settings
-syntax on                       " switch syntax highlighting on
-colorscheme molokai
+set nocompatible                            " no vi compatibility
+set modelines=0                             " prevent some exploits having to do with modelines in files
+
+" === Plugin specific settings =================================================
+
+" --- solarized colors ---
+"colorscheme solarized                       " set the colorscheme
+"set background=dark			             " set to 'dark' or 'light'
+"syntax on                                   " switch syntax highlighting on
+
+" --- molokai colors ---
+colorscheme molokai                         " set the colorscheme
+syntax on                                   "switch syntax highlighting on
+
+" --- vim-airline settings ---
+set laststatus=2                            " always display a status line at the bottom of the window
+let g:airline_detect_paste=1                " show PASTE if in paste mode
+let g:airline#extensions#tabline#enabled=1  " show airline for tabs too
+
 
 " Input support
 set backspace=indent,eol,start  " backspacing over everything in insert mode
 
 " Command completion
-set wildignore+=.hg,.git.svn                        " Version control
+set wildignore+=*.git,*.hg,*.svnj                   " version control
 set wildignore+=*.aux,*.out,*.toc                   " LaTeX intermediate files
-set wildignore+=*.jpg,*.png,*.gif,*.bmp,*.jpeg      " binary images
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg      " binary images
 set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest    " compiles object files
-set wildignore+=*.bak,*~                            " backup files
-set wildignore+=*.sw?                               " Vim swap flies
 set wildignore+=*.DS_Store                          " OSX bullshit
-set wildignore+=*.orig                              " Merge resolution file
+set wildignore+=*.orig                              " merge resolution file
+set wildignore+=*.bak,*.swp,*~                      " backup files
+set wildignore+=*.class
 
 set wildmenu                    " command-line completion in an enhanced mode
-set wildmode=list:longest
+set wildmode=longest,list,full
 
 " Search
 set hlsearch                    " highlight the last used search pattern
@@ -68,7 +120,7 @@ set ignorecase                  " searches are case insensitive
 set smartcase                   " override 'ignorecase' when pattern has upper case characters
 
 set scrolloff=4                 " minimal number of lines to keep above and below the cursor
-set sidescrolloff=2             " minimal number of columns to keep left and right of the cursor
+
 " Size of new GVim window
 if has("gui_running")
     set lines=80
@@ -76,7 +128,9 @@ if has("gui_running")
     set colorcolumn=81
     set guioptions-=T           " no toolbar in GUI
 endif
+
 set listchars=tab:>.\,eol:\$    " strings to use in 'list' mode
+set fillchars=fold:\ ,			" get rid of obnoxious '-' characters in folds
 set number                      " show the line number for each line
 
 set cursorline                  " highlight the screen line of the cursor
@@ -87,17 +141,34 @@ set autowrite                   " write a modified buffer on each :next
 set browsedir=current           " which directory to use for the file browser
 set clipboard=unnamed           " copy to Windows clipboard
 set complete+=k                 " scan the files given with the 'dictionary' option
-set encoding=utf-8              " character encoding used in vim: "latin1", "utf-8", "euc-jp", "big5", etc.
+set encoding=utf-8              " character encoding used in vim: 'latin1', 'utf-8', 'euc-jp', 'big5', etc.
+
 set expandtab                   " use the appropriate number of spaces to insert a <Tab>
+set tabstop=4                   " number of spaces a <Tab> in the text stands for
+set softtabstop=4               " number of spaces a <Tab> in the text stands for
+set shiftwidth=4                " number of spaces used for each step of (auto)indent
+set smarttab
+
 set fileencodings=utf-8         " character encoding for the current file
 set fileformats=dos,unix        " format of the line ends
-set foldenable                  " enable folding
-set foldmethod=marker           " the kind of folding (manual, indent, syntax, expr)
+
+if has("folding")
+    set foldenable              " enable folding
+    set foldmethod=syntax       " the kind of folding (manual, indent, syntax, expr)
+    set foldlevelstart=99       " start editing with all folds open
+
+    " toggle folds
+    nnoremap <Space> za
+    vnoremap <Space> za
+endif
+
 set history=1000                " keep 1000 lines of command line history
+
 " enable the use of the mouse
 if has('mouse')
     set mouse=a
 endif
+
 set mousehide                   " hide the mouse pointer when characters are typed
 set nobackup                    " do not keep a backup file
 set noerrorbells                " do not beep
@@ -107,16 +178,17 @@ set nowritebackup
 set ruler                       " display the current cursor position all the time
 
 set shiftround                  " when at 3 spaces, and I hit > ... go to 4, not to 7
-set shiftwidth=4                " number of spaces used for each step of (auto)indent
 set showcmd                     " display incomplete commands
 set showmatch                   " when inserting a bracket, briefly jump to its match
 set showmode                    " display the mode
 
+if exists('&breakindent')
+	set breakindent				" Indent wrapped lines up to the same level
+endif
+
 set smartindent                 " do clever autodindenting
-set smarttab
-set softtabstop=4               " number of spaces a <Tab> in the text stands for
 set spelllang=en,de             " spell checking
-set tabstop=4                   " number of spaces a <Tab> in the text stands for
+
 try
     if has("win32") || has("win64")
         set guifont=Lucida_Console:h9:cDEFAULT
@@ -129,32 +201,35 @@ try
         set backupdir=/tmp      " set the backup directory
         set undodir=/tmp        " set the undo directory
     endif
+
     set undofile                " saves undo history to an undo file
     set undoreload=10000        " save the whole buffer for undo when reloading it
 catch
 endtry
+
 set visualbell
-set laststatus=2                " Always display a status line at the bottom of the window
-set statusline=
-set statusline+=%-3.3n\                      " buffer number
-set statusline+=%f\                          " file name
-set statusline+=%h%m%r%w                     " flags
-set statusline+=\[%{strlen(&ft)?&ft:'none'}, " filetype
-set statusline+=%{&encoding},                " encoding
-set statusline+=%{&fileformat}]              " file format
-set statusline+=%=                           " right align
-set statusline+=0x%-8B\                      " current char
-set statusline+=%-10.(%l,%c%V%)\ %<%P        " offset
 
-" Highlight VCS conflict markers
-match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+if has("autocmd")
+    " when vimrc is edited, reload it
+    au BufWritePost _vimrc so $HOME\_vimrc
 
-" when vimrc is edited, reload it
-au BufWritePost _vimrc so $HOME\_vimrc
+    " remember last location in a file
+    au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif
 
-" set custom file types
-au BufNewFile,BufRead jquery.*.js,*.json set ft=javascript syntax=jquery
-au BufNewFile,BufRead *.ps1,*.psc1 setf ps1
+    " set custom file types
+    au BufNewFile,BufRead jquery.*.js,*.json set ft=javascript syntax=jquery
+    au BufNewFile,BufRead *.ps1,*.psm1,*.psc1 setf ps1
+    au BufNewFile,BufRead *.config  setf xml
+
+    " markdown files
+    au BufNewFile,BufRead *.md setlocal filetype=markdown
+
+    " for ruby, autoindent with two spaces, always expand tabs
+    au FileType ruby,html,javascript,xml,xhtml set autoindent shiftwidth=2 softtabstop=2 expandtab
+
+    " set color for text files
+    au FileType text set filetype=markdown
+endif
 
 " Mappings
 " ========
@@ -172,10 +247,14 @@ vnoremap <Up> gk
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
 
+" reselect visual block after indent/outdent
+vnoremap < <gv
+vnoremap > >gv
+
 " ROT13 - fun
 map <F12> ggVGg?
 
-" Smart way to move between windows
+" smart way to move between windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
@@ -188,5 +267,9 @@ nnoremap <esc> :noh<cr><esc>
 map <CR> o<Esc>k
 map <S-Enter> O<Esc>j
 
-" Shortcut to rapidly toggle `set list`
+" shortcut to rapidly toggle `set list`
 nmap <leader>l :set list!<CR>
+
+" insert blank lines without going into insert mode
+nmap t o<ESC>k
+nmap T O<ESC>j
