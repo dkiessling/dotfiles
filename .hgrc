@@ -67,6 +67,5 @@ gnupg.path = C:\Program Files (x86)\GNU\GnuPG\gpg2.exe
 [phases]
 publish = False
 
-
 [mq]
 git = auto
