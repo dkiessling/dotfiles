@@ -1,40 +1,72 @@
 [ui]
-editor = gvim.exe
-username = Daniel Kiessling <dkiessling@googlemail.com>
-verbose = True
-merge = tortoisemerge
+username=Daniel Kiessling <dkiessling@gmail.com>
+merge = winmergeu
+
+[diff]
+git = True
+showfunc = True
 
 [extdiff]
 kdiff3 =
+cmd.winmerge = C:\Program Files\WinMerge (x86)\WinMergeU.exe
+opts.winmerge = /e /x /ub /wl
+
+[merge-tools]
+winmergeu.executable = C:\Program Files (x86)\WinMerge\WinMergeU.exe
+winmergeu.priority= 1
+winmergeu.fixeol=True
+winmergeu.checkchanged=True
+#winmergeu.args= /e /ub /dl other /dr local $other $local $output
+winmergeu.args=/e /x /w1 /ub /dl other /dr local $other $local $output
+winmergeu.gui=True
 
 [web]
 description = Daniels Mercurial Repository
-port = 8000
-push_ssl = False
-allow_push = *
-allow_archive = zip
+port = 8888
+allow_read = *
 style = gitweb
+name = default
+allow_archive = zip
 
 [tortoisehg]
 authorcolor = True
 ui.language = en
 postpull = update
-vdiff= tortoisemerge
-monitorrepo = localonly
+vdiff= winmerge
+longsummary = True
+initialrevision = workingdir
+workbench.single = True
+fullauthorname = True
+shell = powershell
+refreshwdstatus = always
+monitorrepo = always
 
 [extensions]
 color =
 hgext.graphlog =
 commitsigs = c:\dev\hg\commitsigs\commitsigs.py
 progress =
-extdiff = 
+extdiff =
+purge =
+mq =
+eol=
 
 [color]
 mode = auto
 
 [alias]
+blame = blame --user --number --line-number --ignore-all-space
+revertall = revert --all
 slog = log --template '{rev}:{node|short} {desc|firstline}\n'
+latest = log -l 5
 
 [commitsigs]
 scheme = gnupg
 gnupg.path = C:\Program Files (x86)\GNU\GnuPG\gpg2.exe
+
+[phases]
+publish = False
+
+
+[mq]
+git = auto
