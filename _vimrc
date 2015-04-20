@@ -72,8 +72,7 @@ filetype off
 " use pathogen.vim to manage and load plugins
 execute pathogen#infect()
 
-Helptags
-
+syntax on                                   " switch syntax highlighting on
 filetype plugin on                          " enable file type detection, use the default filetype settings
 filetype indent on                          " load indent files, to automatically do language-dependent indenting
 
@@ -85,7 +84,6 @@ set modelines=0                             " prevent some exploits having to do
 " --- solarized colors ---
 "colorscheme solarized                       " set the colorscheme
 "set background=dark			             " set to 'dark' or 'light'
-"syntax on                                   " switch syntax highlighting on
 
 " --- molokai colors ---
 colorscheme molokai                         " set the colorscheme
