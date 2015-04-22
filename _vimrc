@@ -23,12 +23,6 @@
 " cd bundle
 " git clone https://github.com/altercation/vim-colors-solarized.git
 "
-" How to install vim-airline plugin
-" ==============================================================================
-" 
-" cd bundle
-" git clone https://github.com/bling/vim-airline.git
-"
 " How to install vim-ps1 plugin
 " ==============================================================================
 "
@@ -88,11 +82,6 @@ set modelines=0                             " prevent some exploits having to do
 " --- molokai colors ---
 colorscheme molokai                         " set the colorscheme
 syntax on                                   "switch syntax highlighting on
-
-" --- vim-airline settings ---
-set laststatus=2                            " always display a status line at the bottom of the window
-let g:airline_detect_paste=1                " show PASTE if in paste mode
-let g:airline#extensions#tabline#enabled=1  " show airline for tabs too
 
 
 " Input support
