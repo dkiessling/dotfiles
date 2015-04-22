@@ -196,6 +196,28 @@ endtry
 
 set visualbell
 
+set laststatus=2                                " always display a status line at the bottom of the window
+
+set statusline=
+set statusline+=%7*\[%n]                                " buffer number
+set statusline+=%1*\ %<%F\                              " path to the file
+set statusline+=%2*\ %y\                                " file type
+set statusline+=%3*\ %{''.(&fenc!=''?&fenc:&enc).''}    " encoding
+set statusline+=%3*\ %{(&bomb?\",BOM\":\"\")}\          " encoding2
+set statusline+=%4*\ %{&ff}\                            " file format (dos/unix)
+set statusline+=%8*\ %=\ row:%l/%L\ (%p%%)\             " row number/total (%)
+set statusline+=%9*\ col:%3c\                           " col number
+set statusline+=%0*\ \ %m%r%h%w\ %P\ \                  " modified/readonly/help file/preview window flag, top/bottom
+
+hi User1 guifg=#ffdad8  guibg=#880c0e
+hi User2 guifg=#000000  guibg=#F4905C
+hi User3 guifg=#292b00  guibg=#f4f597
+hi User4 guifg=#112605  guibg=#aefe7B
+hi User7 guifg=#ffffff  guibg=#880c0e gui=bold
+hi User8 guifg=#ffffff  guibg=#5b7fbb
+hi User9 guifg=#ffffff  guibg=#810085
+hi User0 guifg=#ffffff  guibg=#094afe
+
 if has("autocmd")
     " when vimrc is edited, reload it
     au BufWritePost _vimrc so $HOME\_vimrc
